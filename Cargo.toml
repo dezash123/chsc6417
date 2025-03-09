@@ -1,0 +1,25 @@
+[package]
+name = "chsc6417"
+version = "0.1.0"
+edition = "2021"
+
+description = "A **PURE RUST** driver for the CHSC6417 capacitive touch screen controller; probably works for any chsc6x tho"
+authors = ["Desmond Mehta <desmondmehta@gmail.com>"]
+keywords = ["embedded-hal", "embedded-hal-async"]
+categories = ["embedded", "no-std"]
+
+
+[dependencies]
+defmt = "0.3.8"
+anyhow = { version = "1.0", default-features = false }
+# thiserror = { version = "1.0", package = "thiserror-core", default-features = false }
+embedded-hal = { version = "1.0.0", optional = true } 
+embedded-hal-async = { version = "1.0.0", optional = true } 
+
+[features]
+default = ["async"]
+sync = ["embedded-hal"]
+async = ["embedded-hal", "embedded-hal-async"]
+
+[package.metadata.docs.rs]
+all-features = true
